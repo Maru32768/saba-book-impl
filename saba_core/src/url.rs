@@ -100,53 +100,53 @@ mod tests {
     #[test]
     fn test_url_host() {
         let url = "http://example.com".to_string();
-        let expected = Url {
+        let expected = Ok(Url {
             url: url.clone(),
             host: "example.com".to_string(),
             port: "80".to_string(),
             path: "".to_string(),
             searchpart: "".to_string(),
-        };
-        assert_eq!(expected, Url::new(url).unwrap())
+        });
+        assert_eq!(expected, Url::new(url));
     }
 
     #[test]
     fn test_url_port() {
         let url = "http://example.com:8888".to_string();
-        let expected = Url {
+        let expected = Ok(Url {
             url: url.clone(),
             host: "example.com".to_string(),
             port: "8888".to_string(),
             path: "".to_string(),
             searchpart: "".to_string(),
-        };
-        assert_eq!(expected, Url::new(url).unwrap())
+        });
+        assert_eq!(expected, Url::new(url))
     }
 
     #[test]
     fn test_url_host_port_path() {
         let url = "http://example.com:8888/index.html".to_string();
-        let expected = Url {
+        let expected = Ok(Url {
             url: url.clone(),
             host: "example.com".to_string(),
             port: "8888".to_string(),
             path: "index.html".to_string(),
             searchpart: "".to_string(),
-        };
-        assert_eq!(expected, Url::new(url).unwrap())
+        });
+        assert_eq!(expected, Url::new(url))
     }
 
     #[test]
     fn test_url_host_port_path_seachquery() {
         let url = "http://example.com:8888/index.html?a=123&b=456".to_string();
-        let expected = Url {
+        let expected = Ok(Url {
             url: url.clone(),
             host: "example.com".to_string(),
             port: "8888".to_string(),
             path: "index.html".to_string(),
             searchpart: "a=123&b=456".to_string(),
-        };
-        assert_eq!(expected, Url::new(url).unwrap())
+        });
+        assert_eq!(expected, Url::new(url))
     }
 
     #[test]
